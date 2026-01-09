@@ -34,7 +34,7 @@ function App() {
   ]
   return (
     jobs.map((job) => (
-      <div>{job.company}</div>
+      <div key={job.id}>{job.company}</div>
     ))
   )
 }
