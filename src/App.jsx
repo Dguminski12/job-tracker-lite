@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { JobCard } from './components/JobCard.jsx'
+import { AddJobForm } from './components/AddJobForm.jsx'
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       company: "ABCReach",
       position: "Frontend Developer",
       location: "Remote",
+      dateApplied: "2024-03-01",
       status: "Applied",
       notes: "Follow up in two weeks"
     },
@@ -18,6 +20,7 @@ function App() {
       company: "TechSolutions",
       position: "Full Stack Developer",
       location: "New York, NY",
+      dateApplied: "2024-02-25",
       status: "Interview Scheduled",
       notes: "Interview on March 15th at 10 AM"
     },
@@ -26,12 +29,22 @@ function App() {
       company: "InnovateX",
       position: "Backend Developer",
       location: "San Francisco, CA",
+      dateApplied: "2024-02-20",
       status: "Offer Received",
       notes: "Review offer details and respond by March 20th"
     } 
   ]);
+
+  function addJob(formData) {
+    setJobs((prevJobs) => [
+      ...prevJobs,
+      { id: prevJobs.length + 1, ...formData }
+    ]);
+    
+  }
   return (
     <div>
+      <AddJobForm onAddJob={addJob} />
       {jobs.map((job) => (
       <JobCard key={job.id} job={job} />))}
     </div>
