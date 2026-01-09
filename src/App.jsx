@@ -3,9 +3,8 @@ import './App.css'
 import { JobCard } from './components/JobCard.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  const jobs = [
+  const [jobs, setJobs] = useState([
     {
       id: 1,
       company: "ABCReach",
@@ -30,11 +29,13 @@ function App() {
       status: "Offer Received",
       notes: "Review offer details and respond by March 20th"
     } 
-  ]
+  ]);
   return (
-    jobs.map((job) => (
-      <JobCard key={job.id} job={job} />
-    ))
+    <div>
+      {jobs.map((job) => (
+      <JobCard key={job.id} job={job} />))}
+    </div>
+
   )
 }
   
