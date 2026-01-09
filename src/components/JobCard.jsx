@@ -1,3 +1,5 @@
+import './JobCard.css';
+
 export function JobCard({ job }) {
     return (
         <div className="job-card">

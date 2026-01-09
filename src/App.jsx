@@ -64,14 +64,28 @@ function App() {
     localStorage.setItem("filter", filter);
   } , [filter]);
 
+  const filteredJobs = jobs.filter(job => filter === 'All' || job.status === filter);
+
   return (
-    <div>
+    <div className="app-container">
+      <header className="app-header">
+        <h1>Job Application Tracker</h1>
+        <p>Organize and manage your job search</p>
+      </header>
       <AddJobForm onAddJob={addJob} />
       <Filter filter={filter} setFilter={setFilter} /> 
-      {jobs.filter(job => filter === 'All' || job.status === filter).map((job) => (
-      <JobCard key={job.id} job={job} />))}
+      <div className="jobs-list">
+        {filteredJobs.length > 0 ? (
+          filteredJobs.map((job) => (
+            <JobCard key={job.id} job={job} />
+          ))
+        ) : (
+          <div className="empty-state">
+            <p>No jobs found. Add your first application above!</p>
+          </div>
+        )}
+      </div>
     </div>
-
   )
 }
   

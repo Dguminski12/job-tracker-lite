@@ -1,6 +1,8 @@
+import './Filter.css';
+
 export function Filter({ filter, setFilter }) {
   return (
-    <div>
+    <div className="filter-container">
       <label htmlFor="status-filter">Filter by Status: </label>
       <select
         id="status-filter"
