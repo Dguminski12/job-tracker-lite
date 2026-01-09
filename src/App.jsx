@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { JobCard } from './components/JobCard.jsx'
 import { AddJobForm } from './components/AddJobForm.jsx'
+import { Filter } from './components/Filter.jsx'
 
 function App() {
 
@@ -42,10 +43,14 @@ function App() {
     ]);
     
   }
+
+  const [filter, setFilter] = useState('All');
+
   return (
     <div>
       <AddJobForm onAddJob={addJob} />
-      {jobs.map((job) => (
+      <Filter filter={filter} setFilter={setFilter} /> 
+      {jobs.filter(job => filter === 'All' || job.status === filter).map((job) => (
       <JobCard key={job.id} job={job} />))}
     </div>
 
