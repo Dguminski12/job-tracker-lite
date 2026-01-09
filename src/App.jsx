@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { JobCard } from './components/JobCard.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -34,7 +33,7 @@ function App() {
   ]
   return (
     jobs.map((job) => (
-      <div key={job.id}>{job.company}</div>
+      <JobCard key={job.id} job={job} />
     ))
   )
 }
